@@ -1,0 +1,78 @@
+.appBlock {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.questionLabel,
+.fileLabel {
+  font-size: 18px;
+  color: #264653;
+  margin-bottom: 5px;
+}
+
+.questionInput,
+.fileInput {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.questionInput:focus,
+.fileInput:focus {
+  outline: none;
+  border-color: #2a9d8f;
+  box-shadow: 0 0 0 2px rgba(42, 157, 143, 0.2);
+}
+
+.inProgress {
+  color: #2a9d8f;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+}
+
+.resultOutput p {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  color: #333;
+}
+
+.submitBtn {
+  background-color: #264653;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.submitBtn:hover {
+  background-color: #2a9d8f;
+  transform: translateY(-2px);
+}
+
+.submitBtn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Additional styles for overall padding and spacing */
+input[type="file"] {
+  cursor: pointer;
+}
