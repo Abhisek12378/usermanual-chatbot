@@ -1,5 +1,3 @@
-from langchain.chains.mapreduce import MapReduceChain
-
 from config_loader import AppConfig
 from langchain_openai import OpenAI
 from langchain import PromptTemplate
@@ -9,10 +7,6 @@ from langchain_community.vectorstores import FAISS
 from langchain.embeddings import OpenAIEmbeddings
 import langchain
 from langchain.chat_models import ChatOpenAI
-from langchain.chains.combine_documents.map_reduce import MapReduceDocumentsChain
-from langchain.memory import ConversationSummaryMemory
-from langchain.chains import RetrievalQAWithSourcesChain
-from langchain.chains.qa_with_sources.loading import load_qa_with_sources_chain
 import json
 config=AppConfig()
 class LanguageProcessing:
