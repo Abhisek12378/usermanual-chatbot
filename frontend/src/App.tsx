@@ -3,48 +3,43 @@ import "./App.css";
 import "./components/result.css"
 
 export default function App() {
-  const [result, setResult] = useState();
+  const [result, setResult] = useState<string | undefined>();
   const [question, setQuestion] = useState<string | undefined>("");
-  const [file, setFile] = useState();
+  const [file, setFile] = useState<File | null>(null);
   const [timestamp, setTimestamp] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleQuestionChange = (event: any) => {
+  const handleQuestionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log("Question changed:", event.target.value);
     setQuestion(event.target.value);
   };
 
-  const handleFileChange = (event: any) => {
-    console.log("File selected:", event.target.files[0].name);
-    setFile(event.target.files[0]);
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log("Manual selected:", event.target.files?.[0].name);
+    setFile(event.target.files?.[0] || null);
     const newTimestamp = new Date().toISOString();
     setTimestamp(newTimestamp);
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("Form submitted with question:", question);
     setIsLoading(true);
-    console.log("Loading state set to true");
 
     const formData = new FormData();
     if (file) {
-      console.log("Appending file to formData");
       formData.append("file", file);
     }
     if (question) {
-      console.log("Appending question to formData");
       formData.append("question", question);
     }
     formData.append("timestamp", timestamp);
 
-    console.log("Sending fetch request to backend");
     fetch(`${process.env.REACT_APP_BACKEND_URL}/predict`, {
-           method: "POST",
-           body: formData,
+      method: "POST",
+      body: formData,
     })
       .then((response) => {
-        console.log("Received response from backend");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -66,8 +61,17 @@ export default function App() {
   return (
     <div className="appBlock">
       <form onSubmit={handleSubmit} className="form">
+        <span className="fileLabel">Upload Your User Manual (PDF only):</span>
+        <input
+          type="file"
+          id="file"
+          name="file"
+          accept=".pdf"
+          onChange={handleFileChange}
+          className="fileInput"
+        />
         <label className="questionLabel" htmlFor="question">
-          Question:
+          Ask your question:
         </label>
         <input
           className="questionInput"
@@ -75,21 +79,8 @@ export default function App() {
           type="text"
           value={question}
           onChange={handleQuestionChange}
-          placeholder="Ask your question here"
+          placeholder="Enter your question here"
         />
-        <br />
-        <label className="fileLabel" htmlFor="file">
-          Upload file:
-        </label>
-        <input
-          type="file"
-          id="file"
-          name="file"
-          accept=".csv, .pdf, .docx, .txt"
-          onChange={handleFileChange}
-          className="fileInput"
-        />
-        <br />
         <button
           className="submitBtn"
           type="submit"

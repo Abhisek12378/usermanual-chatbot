@@ -4,7 +4,7 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
+  background-color: #CAF0F8; /* Lighter shade for readability */
 }
 
 .form {
@@ -13,46 +13,47 @@
   gap: 20px;
 }
 
-.questionLabel,
-.fileLabel {
+.fileLabel,
+.questionLabel {
   font-size: 18px;
-  color: #264653;
+  color: #023E8A;
   margin-bottom: 5px;
 }
 
-.questionInput,
-.fileInput {
-  padding: 10px;
+.fileInput,
+.questionInput {
+  padding: 15px;  /* Increased padding for better text visibility */
   border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
+  border: 1px solid #023E8A;
+  font-size: 16px;  /* Keeping font size consistent with your design */
+  height: 50px;  /* Increased height for the input field */
 }
 
-.questionInput:focus,
-.fileInput:focus {
+.fileInput:focus,
+.questionInput:focus {
   outline: none;
-  border-color: #2a9d8f;
-  box-shadow: 0 0 0 2px rgba(42, 157, 143, 0.2);
+  border-color: #0077B6;
+  box-shadow: 0 0 0 2px rgba(0, 119, 182, 0.2);
 }
 
 .inProgress {
-  color: #2a9d8f;
+  color: #023E8A;
   font-style: italic;
   font-weight: bold;
   text-align: center;
 }
 
 .resultOutput p {
-  background-color: #f4f4f4;
+  background-color: #E0F2FE;
   padding: 15px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #90E0EF;
   font-size: 16px;
-  color: #333;
+  color: #03045E;
 }
 
 .submitBtn {
-  background-color: #264653;
+  background-color: #0077B6;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -63,7 +64,7 @@
 }
 
 .submitBtn:hover {
-  background-color: #2a9d8f;
+  background-color: #023E8A;
   transform: translateY(-2px);
 }
 
